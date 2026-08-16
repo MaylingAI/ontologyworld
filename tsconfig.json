@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"strict": true,
+		// Matches the plugin's tsconfig.json. Without it the Worker was the one
+		// tree in the repo where an unchecked array or record index could land
+		// silently: `strict` alone does not imply it. Enabling it surfaced five
+		// such sites — all provably guarded, but none provably guarded *to the
+		// compiler*, which becomes the same thing the moment a guard moves.
+		"noUncheckedIndexedAccess": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"outDir": "dist",
+		"rootDir": "src",
+		"lib": ["ES2022"],
+		"types": ["@cloudflare/workers-types"]
+	},
+	"include": ["src/**/*.ts"]
+}
